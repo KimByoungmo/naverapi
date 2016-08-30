@@ -5,7 +5,7 @@
 #' @name naverblog.search
 #' @export
 #' @import httr
-#' @importFrom XML xmlRoot xpathSApply htmlTreeParse xmlValue
+#' @importFrom XML xmlRoot xpathSApply htmlTreeParse xmlValue xmlToDataFrame
 #' @details This is a package which use Naver Open API to search naver blog You must need Naver client ID and secret
 #' @param keyword keyword you want to search
 #' @param client_Id Naver Open API Client ID
@@ -84,23 +84,14 @@ naverblog.search <- function(keyword = "", client_Id = "", client_secret = "",
     }
   } else
   {
-    result <- xmlRoot(htmlTreeParse(result, useInternalNodes = T,
+    result <- xmlRoot(xmlTreeParse(result, useInternalNodes = T,
       getDTD = F, encoding = "UTF-8"))
-    result1 <- xpathSApply(doc = result, path = '//item', xmlValue)
-    # parsing return contents
-    #result1 <- sapply(result, xmlValue)
-    #bl <- sapply(doc = result, path = "/bloggerlink",
-    #  xmlValue)
-    #title <- sapply(doc = result, path = "/title",
-    #  xmlValue)
-    #desc <- sapply(doc = result, path = "/description",
-    #  xmlValue)
-    #link <- sapply(doc = result, path = "/link", xmlValue)
-
-    #result1 <- data.frame(Blogger_name = bn, Blogger_link = bl,
-    #  Blogger_title = title, Blogger_contents = desc, Blogger_link = link)
-
-    result1
-  }
+    result <- getNodeSet(doc = result,path = '//item')
+    result <- xmlToDataFrame(doc = result, stringsAsFactors = F)
+    result[,1]<- gsub('<b>','',result[,1])
+    result[,3] <- gsub('<b>','',result[,3])
+    result[,1] <- gsub('</b>','',result[,1])
+    result[,3] <- gsub('</b>','',result[,3])
+    result
+    }
 }
-
