@@ -2,12 +2,15 @@
 % Please edit documentation in R/blog_search.R
 \docType{package}
 \name{naverblog.search}
+\alias{naver.search}
 \alias{naverblog.search}
 \alias{naverblog.search-package}
 \title{naverblog.search}
 \usage{
-naverblog.search(keyword = "", client_Id = "", client_secret = "",
-  display = 100, start = 1, sort = "sim")
+naver.search(keyword = "", client_Id = "", client_secret = "",
+  category = c("blog", "news", "region", "encyclopedia", "movie"),
+  display = 100, start = 1, sort = "sim", genre = "", country = "",
+  yearfrom = NULL, yearto = NULL)
 }
 \arguments{
 \item{keyword}{keyword you want to search}
@@ -15,6 +18,8 @@ naverblog.search(keyword = "", client_Id = "", client_secret = "",
 \item{client_Id}{Naver Open API Client ID}
 
 \item{client_secret}{Naver Open API Client secret}
+
+\item{category}{category whcich you want to search (e.g : blog, news, region,.....)}
 
 \item{display}{the number of search result}
 
@@ -30,6 +35,7 @@ This is a package which use Naver Open API to search naver blog You must need Na
 }
 \examples{
 naverblog.search(keyword = 'andong', client_Id = 'DpMY9iw4AztbeSxYXf2t', client_secret = '69Az0lv56T')
+
 }
 \author{
 Kim BM(ksd2080@hotmail.com)
