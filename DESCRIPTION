@@ -1,11 +1,17 @@
 Package: naverapi
 Title: Search it using Naver Open API
-Version: 0.0.0.9000
+Version: 0.0.0.9
 Authors@R: person("Kim Byoung Mo", email = "ksd2080@gmail.com", role = c("aut", "cre"))
 Description: Searching it using Naver Open API.
+Imports:
+    httr,
+    XML,
+    tuneR
 Depends:
     R (>= 3.3.0)
-License: What license is it under?
+Linkingto:
+    tuneR
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1

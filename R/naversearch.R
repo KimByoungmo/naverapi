@@ -14,6 +14,10 @@
 #' @param display the number of search result
 #' @param start start number of search result
 #' @param sort sim : similarity, date : ordered by date
+#' @param genre moive genre (when you wnat to search moives, it's a optional variable)
+#' @param country  movie made in where? (when you wnat to search moives, it's a optional variable)
+#' @param yearfrom movie searching period
+#' @param yearto movie searching period
 #' @examples naver.search(keyword = 'andong', client_Id = 'DpMY9iw4AztbeSxYXf2t', client_secret = '69Az0lv56T')
 
 naver.search <- function(keyword = "", client_Id = "", client_secret = "", category = c('blog','news','region','encyclopedia','movie'),
