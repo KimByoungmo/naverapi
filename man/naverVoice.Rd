@@ -13,9 +13,9 @@ naverVoice(text = "", client_Id = "", client_secret = "",
 
 \item{client_secret}{Naver Open API Client secret}
 
-\item{speaker}{speaker whose voice is composed.
+\item{speaker}{speaker whose voice is composed'
 refer to below
-* majin : Korean woman, jinhi : Korean Man, clara : American woman, matt : American man, yuri : Japanses woman, shinji : Japanese man, meimei : Chinese woman}
+majin : Korean woman, jinhi : Korean Man, clara : American woman, matt : American man, yuri : Japanses woman, shinji : Japanese man, meimei : Chinese woman}
 }
 \description{
 Make a voice synthesis using Naver Open API

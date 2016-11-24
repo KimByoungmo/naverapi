@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' @title naverblog.search\n#' @description Searching Naver blog with using Naver Open API\n#' @author Kim BM(ksd2080@hotmail.com)\n#' @docType package\n#' @name naverblog.search\n#' @export\n#' @import httr\n#' @importFrom XML xmlRoot xpathSApply htmlTreeParse xmlValue xmlToDataFrame xmlTreeParse getNodeSet\n#' @details This is a package which use Naver Open API to search naver blog You must need Naver client ID and secret\n#' @param keyword keyword you want to search\n#' @param client_Id Naver Open API Client ID\n#' @param client_secret Naver Open API Client secret\n#' @param category category whcich you want to search (e.g : blog, news, region,.....)\n#' @param display the number of search result\n#' @param start start number of search result\n#' @param sort sim : similarity, date : ordered by date\n#' @param genre moive genre (when you wnat to search moives, it's a optional variable)\n#' @param country  movie made in where? (when you wnat to search moives, it's a optional variable)\n#' @param yearfrom movie searching period\n#' @param yearto movie searching period\n#' @examples naver.search(keyword = 'andong', client_Id = 'DpMY9iw4AztbeSxYXf2t', client_secret = '69Az0lv56T')\n\nnaver.search <- function(keyword = \"\", client_Id = \"\", client_secret = \"\", category = c('blog','news','region','encyclopedia','movie'),\n  display = 100, start = 1, sort = \"sim\", genre = \"\", country = \"\", yearfrom = NULL, yearto = NULL)\n  {\n  cc <- match.arg(category, several.ok = F)\n  # url setting\n  url <- url_list[cc]\n  v <- request_variable[request_variable$Category == cc,2]\n\n    # start#\n  if('header' %in% v) {\n  h <- c('X-Naver-Client-Id' = client_Id, 'X-Naver-Client-Secret' = client_secret)  #GET header setting\n  }\n\n  if('query' %in% v) {\n    qq<- c('query' = enc2utf8(keyword))\n\n  }\n\n  if('display' %in% v) {\n  temp <- c('display' = display)\n  try(qq <- append(qq ,temp), silent = T)\n  }\n\n  if('start' %in% v) {\n    temp <- c('start' = start)\n    try(qq <- append(qq, temp), silent = T)\n  }\n\n  if('genre' %in% v) {\n    temp <- c('genre' = genre)\n    try(qq <- append(qq,temp), silent = T)\n  }\n\n  if('country' %in% v) {\n    temp <- c('country' = country)\n    try(qq <- append(qq,temp), silent = T)\n  }\n\n  if('yearfrom' %in% v) {\n      temp <- c('yearfrom' = yearfrom)\n      try(qq <- append(qq,temp), silent = T)\n    }\n\n\n  if('yearto' %in% v) {\n      temp <- c('yearto' = yearfrom)\n      try(qq <- append(qq,temp), silent = T)\n  }\n\n  if('sort' %in% v) {\n    temp <- c('sort' = sort)\n    try(qq <- append(qq,temp), silent = T)\n  }\n  qq <- as.list(qq)\n\n  result <- GET(url = url, add_headers(h), query = qq)\n\n  # Checking http status code #\n  if (result$status_code != 200)\n  {\n    if (result$status_code == 400)\n    {\n      stop(\"Check request variables \\n at least, one variable is omitted.\",\n        call. = F)\n    } else if (result$status_code == 401)\n    {\n      stop(\"Check Client ID or Client Secret.\", call. = F)\n    }\n    else if (result$status_code == 500)\n    {\n      stop(\"System Error.\", call. = F)\n    }\n  } else\n  {\n    result <- xmlRoot(xmlTreeParse(result, useInternalNodes = T,\n      getDTD = F, encoding = \"UTF-8\"))\n    result <- getNodeSet(doc = result,path = '//item')\n    result <- xmlToDataFrame(doc = result, stringsAsFactors = F)\n    for(i in 1:length(result)) {\n    result[,i]<- gsub('<b>','',result[,i])\n    result[,i] <- gsub('</b>','',result[,i])\n}\n\n    result\n    }\n  }\n\n",
+    "created" : 1479998868960.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "463597399",
+    "id" : "F22CBF06",
+    "lastKnownWriteTime" : 1479999026,
+    "last_content_update" : 1479999026840,
+    "path" : "E:/Github/naverapi/R/naversearch.R",
+    "project_path" : "R/naversearch.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

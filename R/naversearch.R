@@ -5,7 +5,7 @@
 #' @name naverblog.search
 #' @export
 #' @import httr
-#' @importFrom XML xmlRoot xpathSApply htmlTreeParse xmlValue xmlToDataFrame
+#' @importFrom XML xmlRoot xpathSApply htmlTreeParse xmlValue xmlToDataFrame xmlTreeParse getNodeSet
 #' @details This is a package which use Naver Open API to search naver blog You must need Naver client ID and secret
 #' @param keyword keyword you want to search
 #' @param client_Id Naver Open API Client ID

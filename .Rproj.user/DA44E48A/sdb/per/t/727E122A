@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: naverapi\nTitle: Search it using Naver Open API\nVersion: 0.0.0.9\nAuthors@R: person(\"Kim Byoung Mo\", email = \"ksd2080@gmail.com\", role = c(\"aut\", \"cre\"))\nDescription: Searching it using Naver Open API.\nImports:\n    httr,\n    XML,\n    tuneR\nDepends:\n    R (>= 3.3.0)\nLinkingto:\n    tuneR\nLicense: GPL-3\nEncoding: UTF-8\nLazyData: true\nRoxygenNote: 5.0.1\n",
+    "created" : 1479999037790.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1540291908",
+    "id" : "727E122A",
+    "lastKnownWriteTime" : 1473644208,
+    "last_content_update" : 1473644208,
+    "path" : "E:/Github/naverapi/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}
