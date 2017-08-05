@@ -37,5 +37,5 @@ naverVoice <-
         encode = 'form'
       )
     result <- content(result)
-    play(.Call('do_read_mp3', result, PACKAGE = 'tuneR'))
+    play(.Call('C_do_read_mp3', result, PACKAGE = 'tuneR'))
   }
